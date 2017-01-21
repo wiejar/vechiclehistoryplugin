@@ -23,20 +23,9 @@ $(document).ready(function() {
   	&& jQuery.cookie('enabled')=="true") {
         setTimeout(function(){ 
             a = jQuery(document.getElementById('_historiapojazduportlet_WAR_historiapojazduportlet_:data'))[0].value;
-			var d = new Date();
-			d.setFullYear(parseInt(a.substr(6,10)),parseInt(a.substr(3,5)),parseInt(a.substr(0,2)));
-			d.setTime(d.getTime() + 86400000);
-		    var sss = addZero(d.getDate())+ "." + addZero(d.getMonth()) + "." + d.getFullYear();
-		    //jQuery('input.field.data')[0].value = addZero(d.getDate()) + "." + addZero(d.getMonth()) + "." + d.getFullYear();
-
-		    function addZero(val) {
-			    if(val<10) {
-			      val = "0"+val;
-			    }
-			    return val;
-			}
-
-		    jQuery('input.field.data')[0].value = sss;
+			var m = moment(a, 'DD.MM.YYYY').add('1', 'd').format("DD.MM.YYYY");
+			
+		    jQuery('input.field.data')[0].value = m;
 		    jQuery('input.field.data').blur();
 
 			jQuery.cookie('data', jQuery('input.field.data')[0].value);		
