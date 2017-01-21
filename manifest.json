@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+
+  "name": "Vechicle history plugin",
+  "description": "This extension loops thru dates in vechicle history page",
+  "version": "1.0",
+
+  "permissions": [
+    "activeTab"
+  ],
+  "content_scripts": [
+  {
+    "matches": [
+      "https://historiapojazdu.gov.pl/*"
+    ],
+    "js": ["jquery-3.1.1.min.js", "jquery.cookie.js", "content.js"]
+  }
+]
+
+}
