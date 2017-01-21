@@ -13,7 +13,7 @@
     "matches": [
       "https://historiapojazdu.gov.pl/*"
     ],
-    "js": ["jquery-3.1.1.min.js", "jquery.cookie.js", "content.js"]
+    "js": ["jquery-3.1.1.min.js", "jquery.cookie.js", "moment.js", "content.js"]
   }
 ]
 

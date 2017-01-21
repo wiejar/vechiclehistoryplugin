@@ -23,13 +23,23 @@ $(document).ready(function() {
   	&& jQuery.cookie('enabled')=="true") {
         setTimeout(function(){ 
             a = jQuery(document.getElementById('_historiapojazduportlet_WAR_historiapojazduportlet_:data'))[0].value;
-		    b = parseInt(a.substr(0,2))+1;
-		    if(b<10) {
-		      b = "0"+b;
-		    }
-		    jQuery('input.field.data')[0].value = a.replace(a.substr(0,2),b);
+			var d = new Date();
+			d.setFullYear(parseInt(a.substr(6,10)),parseInt(a.substr(3,5)),parseInt(a.substr(0,2)));
+			d.setTime(d.getTime() + 86400000);
+		    var sss = addZero(d.getDate())+ "." + addZero(d.getMonth()) + "." + d.getFullYear();
+		    //jQuery('input.field.data')[0].value = addZero(d.getDate()) + "." + addZero(d.getMonth()) + "." + d.getFullYear();
+
+		    function addZero(val) {
+			    if(val<10) {
+			      val = "0"+val;
+			    }
+			    return val;
+			}
+
+		    jQuery('input.field.data')[0].value = sss;
 		    jQuery('input.field.data').blur();
-			jQuery.cookie('data', jQuery('input.field.data')[0].value);
+
+			jQuery.cookie('data', jQuery('input.field.data')[0].value);		
           	jQuery('.btn-sprawdz').trigger('click');
       }, 750);  
   }
